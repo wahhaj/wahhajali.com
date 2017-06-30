@@ -1,0 +1,55 @@
+body {
+  background-color: $core-background;
+  color: $core-text;
+  font-family: $font-family-default;
+  font-size: 16px;
+  font-weight: 300;
+
+  @include breakpoint(medium) {
+    font-size: 18px;
+  }
+
+  @include breakpoint(large) {
+    font-size: 20px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-header;
+  font-weight: 400;
+
+  strong {
+    color: $core-accent;
+  }
+}
+
+h1 {
+  font-size: $core-font-size + 0.70;
+}
+
+h2 {
+  font-size: $core-font-size + 0.50;
+}
+
+h3 {
+  font-size: $core-font-size + 0.30;
+}
+
+h4 {
+  font-size: $core-font-size + 0.10;
+}
+
+a {
+  color: $core-accent;
+  text-decoration: none;
+
+  &:hover {
+    color: $core-accent;
+  }
+}
+
