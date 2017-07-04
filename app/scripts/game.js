@@ -110,7 +110,7 @@
 
   const drawGrid = function() {
     // Clear the canvas to start
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.clearRect(-1, -1, canvas.width, canvas.height)
 
     for (let i = 0; i < numRows * numColumns; i++) {
       const cell = grid[i]
