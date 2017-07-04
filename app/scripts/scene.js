@@ -1,4 +1,4 @@
-(function() {
+;(function() {
   const canvas = document.getElementById('scene')
   const ctx = canvas.getContext('2d')
   ctx.canvas.width = canvas.offsetWidth
