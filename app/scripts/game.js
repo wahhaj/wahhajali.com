@@ -44,37 +44,28 @@
   }
 
   /**
-    * For a cell at (r0, c0), returns the index of neighbouring cell at (r0 + dr, c0 + dc).
-    * Properly takes into account wrapping between first and last rows+columns.
-    * Only works for dr and dc between -1 and 1.
+    * Returns the index of cell at (r0, c0) in the grid array.
+    * Wraps rows and columns around from one end to another when
+    * trying to access a cell outside the grid bounds.
   */
-  const getNeighbourIndex = function(r0, c0, dr, dc) {
-    let row, col
+  const getWrappedIndex = function(r0, c0) {
+    let row = r0
+    let col = c0
 
-    if (r0 <= 0 && dr < 0) {
-      // If cell is in first row, and trying to check neighbour in row above
-      // wrap around to last row.
-      // Note: dr is negative so this is numRows - dr
-      row = numRows + dr
-    } else if (r0 >= numRows - 1 && dr > 0) {
-      // If cell is in last row, and trying to check neighbour in row below
-      // wrap around to first row.
-      row = 0
-    } else {
-      row = r0 + dr
+    if (r0 < 0) {
+      // If row is negative, wrap around to last row.
+      row = numRows + r0
+    } else if (r0 >= numRows) {
+      // If row is higher than numRows, wrap around from first row.
+      row = r0 - numRows
     }
 
-    if (c0 <= 0 && dc < 0) {
-      // If cell is in first column, and trying to check neighbour in column to the left
-      // wrap around to last column.
-      // Note: dc is negative so this is numColumns - dr
-      col = numColumns + dc
-    } else if (c0 >= numColumns - 1 && dc > 0) {
-      // If cell is in last column, and trying to check neighbour in column to the right
-      // wrap around to first column.
-      col = 0
-    } else {
-      col = c0 + dc
+    if (c0 < 0) {
+      // If col is negative, wrap around to last column.
+      col = numColumns + c0
+    } else if (c0 >= numColumns) {
+      // If col is higher than numColumns, wrap around from first column.
+      col = c0 - numColumns
     }
 
     // convert (row, col) coord to index in grid array
@@ -85,16 +76,16 @@
     grid.forEach((cell, i) => {
       // Check neighbour in each direction to get number of living neighbours
       let liveNeighbours = 0
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, -1, -1)] //top left
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, -1, 0)] //top center
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, -1, 1)] //top right
+      liveNeighbours += isAlive[getWrappedIndex(cell.row - 1, cell.col - 1)] //top left
+      liveNeighbours += isAlive[getWrappedIndex(cell.row - 1, cell.col)] //top center
+      liveNeighbours += isAlive[getWrappedIndex(cell.row - 1, cell.col + 1)] //top right
 
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, 0, -1)] //middle left
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, 0, 1)] //middle right
+      liveNeighbours += isAlive[getWrappedIndex(cell.row, cell.col - 1)] //middle left
+      liveNeighbours += isAlive[getWrappedIndex(cell.row, cell.col + 1)] //middle left
 
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, 1, -1)] //bottom left
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, 1, 0)] //bottom center
-      liveNeighbours += isAlive[getNeighbourIndex(cell.row, cell.col, 1, 1)] //bottom right
+      liveNeighbours += isAlive[getWrappedIndex(cell.row + 1, cell.col - 1)] //bottom left
+      liveNeighbours += isAlive[getWrappedIndex(cell.row + 1, cell.col)] //bottom center
+      liveNeighbours += isAlive[getWrappedIndex(cell.row + 1, cell.col + 1)] //bottom right
 
       if (liveNeighbours === 2) {
         // With 2 living neighbours, cell keeps its state
@@ -172,9 +163,9 @@
 
   const fillPattern = function(r0, c0, ...pattern) {
     pattern.forEach(([r, c]) => {
-      const i = (r0 + r) * numColumns + (c0 + c)
-      isAlive[i] = true
+      const i = getWrappedIndex(r0 + r, c0 + c)
       grid[i].alive = true
+      isAlive[i] = true
     })
   }
 
