@@ -15,5 +15,9 @@ section.section {
   .section-body {
     width: 100%;
     max-width: 900px;
+
+    .section-item {
+      margin-bottom: $space-l;
+    }
   }
 }

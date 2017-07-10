@@ -1,0 +1,21 @@
+ul.tags {
+  display: inline-flex;
+  width: 100%;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    font-size: 0.8rem;
+    margin: 0 $space-s;
+    padding: $space-s;
+
+    border: 1px solid $core-text;
+    border-radius: 2px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}

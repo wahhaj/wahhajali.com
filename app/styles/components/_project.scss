@@ -55,21 +55,12 @@ section.section .projects {
     }
   }
 
-  ul.project-tags {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: inline-flex;
+  ul.tags {
     justify-content: center;
 
-    li {
-      font-size: 0.7rem;
+    li:first-of-type {
       margin: 0 $space-s;
-      color: #aaa;
-      border: 1px solid #aaa;
-      padding: $space-s;
-      border-radius: 1px;
     }
   }
 }
+
