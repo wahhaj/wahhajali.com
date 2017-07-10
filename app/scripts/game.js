@@ -17,6 +17,7 @@
   const SMOOTHING_FACTOR = 2
 
   let step = 0
+  let generation = 0
   const grid = []
   const isAlive = []
 
@@ -73,6 +74,8 @@
   }
 
   const updateGrid = function() {
+    generation++
+
     grid.forEach((cell, i) => {
       // Check neighbour in each direction to get number of living neighbours
       let liveNeighbours = 0
@@ -150,6 +153,11 @@
       step = 0
     }
 
+    if (generation % 80 === 0) {
+      fillPattern(randomInt(0, numRows), randomInt(0, numColumns),
+        [0, 12], [1, 12], [2, 12], [1, 6],[2, 7],[0, 8],[1, 8],[2, 8])
+    }
+
     requestAnimationFrame(tick)
   }
 
@@ -178,7 +186,7 @@
     // Glider
     // fillPattern(10, 10, [1, 0], [2, 1], [0, 2], [1, 2], [2, 2])
 
-    fillPattern(10, 10, [0, 12], [1, 12], [2, 12], [1, 6],[2, 7],[0, 8],[1, 8],[2, 8])
+    // fillPattern(10, 10, [0, 12], [1, 12], [2, 12], [1, 6],[2, 7],[0, 8],[1, 8],[2, 8])
 
     fillRandom()
     updateGrid()
