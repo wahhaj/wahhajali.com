@@ -5,6 +5,7 @@
   ctx.canvas.height = canvas.offsetHeight
   ctx.translate(0.5, 0.5) // Fix jagged lines
   ctx.fillStyle = '#fff'
+  ctx.globalAlpha = 0.9
 
   const CELL_SIZE = 2
   const CELL_MARGIN = 8
@@ -35,7 +36,6 @@
           x: col * (CELL_SIZE + CELL_MARGIN),
           y: row * (CELL_SIZE + CELL_MARGIN),
           size: randomInt(CELL_SIZE * 0.5, CELL_SIZE * 1.2),
-          alpha: Math.random() / 2 + 0.5,
           bornAt: -1,
           diedAt: -1
         })
