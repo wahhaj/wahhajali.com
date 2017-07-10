@@ -5,7 +5,10 @@
 @import 'base/variables',
   'base/typography';
 
-@import 'components/header';
+@import 'components/header',
+  'components/navbar',
+  'components/section',
+  'components/project';
 
 div.container {
   display: flex;
