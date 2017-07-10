@@ -22,7 +22,7 @@ h5,
 h6 {
   font-family: $font-family-header;
   font-weight: 700;
-  color: $core-c;
+  color: $light-blue;
 
   strong {
     color: $core-accent;
@@ -33,12 +33,12 @@ h6 {
 }
 
 h1 {
-  color: $core-a;
+  color: $dark-blue;
   font-size: $core-font-size + 3.0;
 }
 
 h2 {
-  color: $core-b;
+  color: $mid-blue;
   font-size: $core-font-size + 1.0;
 }
 
@@ -53,7 +53,7 @@ h4 {
 }
 
 a {
-  color: $core-c;
+  color: $light-blue;
   text-decoration: none;
   padding: 5px;
   transition: background-color 0.25s;
