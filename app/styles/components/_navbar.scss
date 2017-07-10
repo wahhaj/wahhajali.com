@@ -1,0 +1,44 @@
+nav.navbar {
+  height: $navbar-height;
+  background-color: $core-a;
+  margin-bottom: $space-l;
+  z-index: 100;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li > a {
+      color: $core-background;
+      padding: $space-m;
+      margin: 0 $space-m;
+      transition: background-color 0.25s;
+
+      &:hover, &.active {
+        background-color: $core-accent;
+      }
+
+      &.logo {
+        font-size: 2rem;
+
+        &:hover {
+          font-weight: bold;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}

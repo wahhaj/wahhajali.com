@@ -21,7 +21,8 @@ h4,
 h5,
 h6 {
   font-family: $font-family-header;
-  font-weight: 400;
+  font-weight: 700;
+  color: $core-c;
 
   strong {
     color: $core-accent;
@@ -29,11 +30,13 @@ h6 {
 }
 
 h1 {
-  font-size: $core-font-size + 0.70;
+  color: $core-a;
+  font-size: $core-font-size + 3.0;
 }
 
 h2 {
-  font-size: $core-font-size + 0.50;
+  color: $core-b;
+  font-size: $core-font-size + 1.0;
 }
 
 h3 {
@@ -45,11 +48,18 @@ h4 {
 }
 
 a {
-  color: $core-accent;
+  color: $core-c;
   text-decoration: none;
+  padding: 5px;
+  transition: background-color 0.25s;
+  border-radius: 2px;
 
   &:hover {
     color: $core-accent;
+    background-color: rgba($core-accent, 0.1);
   }
 }
 
+p {
+  line-height: 1.5;
+}
