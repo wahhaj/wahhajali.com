@@ -27,6 +27,9 @@ h6 {
   strong {
     color: $core-accent;
   }
+  .small {
+    font-weight: 300;
+  }
 }
 
 h1 {
@@ -45,6 +48,8 @@ h3 {
 
 h4 {
   font-size: $core-font-size + 0.10;
+  font-weight: 300;
+  color: $core-text;
 }
 
 a {
