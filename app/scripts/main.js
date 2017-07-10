@@ -72,5 +72,20 @@
     });
   }
 
+  const navbarHeight = 80
+
   // Your custom JavaScript goes here
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('nav.navbar')
+    const header = document.querySelector('header.header')
+
+    if (window.pageYOffset >= window.innerHeight - navbarHeight) {
+      navbar.classList.add('fixed')
+      header.classList.add('fixed')
+    } else {
+      navbar.classList.remove('fixed')
+      header.classList.remove('fixed')
+    }
+  })
+
 })();
