@@ -1,5 +1,6 @@
 ul.tags {
   display: inline-flex;
+  flex-flow: row wrap;
   width: 100%;
 
   list-style: none;
@@ -8,10 +9,10 @@ ul.tags {
 
   li {
     font-size: 0.8rem;
-    margin: 0 $space-s;
+    margin: 0 $space-s $space-s 0;
     padding: $space-s;
 
-    border: 1px solid $core-text;
+    border: 1px solid $core-accent;
     border-radius: 2px;
 
     &:first-of-type {
