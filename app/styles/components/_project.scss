@@ -16,6 +16,7 @@ section.section .projects {
 
     img {
       width: 300px;
+      max-width: calc(100vw - #{2 * $space-l});
       max-height: 200px;
       border-radius: 5px;
       box-shadow: 1px 1px 5px #aaa;
@@ -28,6 +29,7 @@ section.section .projects {
       left: 0;
       right: 0;
       width: 300px;
+      max-width: calc(100vw - #{2 * $space-l});
       height: 200px;
       border-radius: 5px;
       background-color: $core-accent;
