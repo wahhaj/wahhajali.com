@@ -113,7 +113,8 @@ gulp.task('scripts', () =>
       './app/scripts/main.js',
       // Other scripts
       './app/scripts/game.js',
-      './app/scripts/scene.js'
+      './app/scripts/scene.js',
+      './app/scripts/footer.js'
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
