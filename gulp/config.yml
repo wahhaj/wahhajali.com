@@ -1,0 +1,61 @@
+browsersync:
+  notify: true
+  open:   true
+  port:   3000
+  server:
+    basedir: "dist/"
+  xip:    false
+
+
+clean: "dist/"
+
+
+copy:
+  destination: "dist/"
+  notification: "Running copy"
+  source:
+    - "app/*"
+    - "!app/*.html"
+
+
+html:
+  destination: "dist/"
+  source: "app/**/*.html"
+  notification: "Processing Html files"
+
+
+images:
+  destination: "dist/images/"
+  notification: "Optimizing images"
+  source: "app/images/**/*"
+
+
+scripts:
+  destination: "dist/scripts/"
+  filename: "main.js"  # filename to output
+  notification: "Processing Javascript files"
+  source: # Paths to JavaScript files, which are combined into one file
+    - app/scripts/main.js
+    - app/scripts/game.js
+    - app/scripts/scene.js
+    - app/scripts/footer.js
+
+
+styles:
+  compatibility: # Autoprefixer will make sure your CSS works with these browsers
+    - "last 2 versions"
+    - "ie >= 9"
+  destination: "dist/styles/"
+  include:
+    - node_modules/normalize.css
+  notification: "Processing stylesheets"
+  source: "app/styles/**/*.scss"
+
+
+serviceworker:
+  cacheId: wahhajali
+  staticFiles:
+    - dist/images/**/*`
+    - dist/scripts/**/*.js`
+    - dist/styles/**/*.css`
+    - dist/*.{html,json}
