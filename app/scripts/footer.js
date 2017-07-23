@@ -8,17 +8,18 @@
   const colors = {
     back: {
       light: '#2763a2',
-      dark: '#235a93'
+      dark: '#235a93',
     },
     mid: {
       light: '#00376f',
-      dark: '#003265'
+      dark: '#003265',
     },
     front: {
       light: '#0b1a37',
-      dark: '#0a1832'
-    }
+      dark: '#0a1832',
+    },
   }
+
   /**
     * Returns a random integer in the given range.
     * @param {number} min Minimum integer in range
@@ -60,7 +61,6 @@
     ctx.lineTo(x0 - height * 2, y0)
     ctx.fillStyle = colors.dark
     ctx.fill()
-
   }
 
   const drawMountainRange = function(minHeight, maxHeight, colors, probability = 0.8) {
@@ -82,10 +82,22 @@
     }
   }
 
-  const baseHeight = canvas.height
+  const draw = function() {
+    const baseHeight = canvas.height
 
-  // Three 'layers' of mountains to simulate depth
-  drawMountainRange(baseHeight * 0.8, baseHeight * 1, colors.back)
-  drawMountainRange(baseHeight * 0.6, baseHeight * 0.8, colors.mid)
-  drawMountainRange(baseHeight * 0.2, baseHeight * 0.6, colors.front, 1.0)
+    // Three 'layers' of mountains to simulate depth
+    drawMountainRange(baseHeight * 0.8, baseHeight * 1, colors.back)
+    drawMountainRange(baseHeight * 0.6, baseHeight * 0.8, colors.mid)
+    drawMountainRange(baseHeight * 0.2, baseHeight * 0.6, colors.front, 1.0)
+  }
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    ctx.canvas.width = canvas.offsetWidth
+    ctx.canvas.height = canvas.offsetHeight
+    draw()
+  })
+
+  draw()
 })()
