@@ -36,6 +36,7 @@ scripts:
   notification: "Processing Javascript files"
   source: # Paths to JavaScript files, which are combined into one file
     - app/scripts/main.js
+    - app/scripts/navbar.js
     - app/scripts/game.js
     - app/scripts/scene.js
     - app/scripts/footer.js
