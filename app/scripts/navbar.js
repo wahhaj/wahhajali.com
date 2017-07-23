@@ -14,6 +14,18 @@
     }
   })
 
+
+  // Display navbar-collapse when navbar-toggle is clicked and hide it when any links inside it are clicked
+  const navbarCollapse = document.querySelector('.navbar-collapse')
+  const navbarCollapseTogglers = document.querySelectorAll('.navbar-toggle, .navbar-collapse a')
+
+  navbarCollapseTogglers.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      navbarCollapse.classList.toggle('collapsed')
+    })
+  })
+
+
   // Smooth scroll each navbar link to its section
   const pageLinks = document.querySelectorAll('a[href*=\'#\']')
 

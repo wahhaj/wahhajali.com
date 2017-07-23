@@ -1,37 +1,65 @@
 nav.navbar {
-  height: $navbar-height;
   background-color: $dark-blue;
+  height: $navbar-height;
   margin-bottom: $space-l;
+  position: relative;
   z-index: 100;
 
-  ul {
-    display: flex;
+  .navbar-mobile,
+  .navbar-main {
     align-items: center;
     justify-content: center;
     height: 100%;
 
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li > a {
+    a,
+    .navbar-toggle {
       color: $core-background;
       padding: $space-m;
-      margin: 0 $space-m;
-      transition: background-color 0.25s;
+      text-align: center;
 
-      &:hover, &.active {
+      &:hover,
+      &.active {
         background-color: $core-accent;
       }
+    }
 
-      &.logo {
-        font-size: 2rem;
-
-        &:hover {
-          font-weight: bold;
-          background-color: transparent;
-        }
+    .navbar-toggle,
+    .logo {
+      font-size: 2rem;
+      &:hover {
+        font-weight: bold;
+        background-color: transparent;
       }
+    }
+  }
+
+  .navbar-mobile {
+    display: flex;
+
+    .navbar-collapse {
+      background-color: $dark-blue;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      position: absolute;
+      left: 0;
+      top: $navbar-height;
+
+      a {
+        margin: $space-m 0;
+      }
+
+      &.collapsed {
+        display: none;
+      }
+    }
+  }
+
+  .navbar-main {
+    display: none;
+    a {
+      margin: 0 $space-m;
     }
   }
 
@@ -40,5 +68,14 @@ nav.navbar {
     top: 0;
     left: 0;
     right: 0;
+  }
+
+  @include breakpoint(small) {
+    .navbar-mobile {
+      display: none;
+    }
+    .navbar-main {
+      display: flex;
+    }
   }
 }
