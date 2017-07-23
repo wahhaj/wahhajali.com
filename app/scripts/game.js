@@ -1,4 +1,4 @@
-;(function() {
+;(function() { // eslint-disable-line
   const canvas = document.getElementById('game')
   const ctx = canvas.getContext('2d')
   ctx.canvas.width = canvas.offsetWidth
@@ -155,7 +155,7 @@
 
     if (generation % 80 === 0) {
       fillPattern(randomInt(0, numRows), randomInt(0, numColumns),
-        [0, 12], [1, 12], [2, 12], [1, 6],[2, 7],[0, 8],[1, 8],[2, 8])
+        [0, 12], [1, 12], [2, 12], [1, 6], [2, 7], [0, 8], [1, 8], [2, 8])
     }
 
     requestAnimationFrame(tick)

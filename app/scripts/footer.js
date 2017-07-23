@@ -1,4 +1,4 @@
-;(function() {
+;(function() { // eslint-disable-line
   const canvas = document.getElementById('footer')
   const ctx = canvas.getContext('2d')
   ctx.canvas.width = canvas.offsetWidth
