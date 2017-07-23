@@ -153,21 +153,30 @@
       step = 0
     }
 
-    if (generation % 80 === 0) {
-      fillPattern(randomInt(0, numRows), randomInt(0, numColumns),
-        [0, 12], [1, 12], [2, 12], [1, 6], [2, 7], [0, 8], [1, 8], [2, 8])
+    // Spawn a random pattern at regular intervals so that game is always evolving
+    if (generation % 40 === 0 && step === 0) {
+      fillPattern(randomInt(0, numRows), randomInt(0, numColumns), ...patterns[randomInt(0, patterns.length - 1)])
     }
 
     requestAnimationFrame(tick)
   }
 
-  const fillRandom = function() {
-    for (let i = 0; i < numRows * numColumns; i++) {
-      const alive = Math.random() < 0.6 // 60% chance of each cell being alive
-      grid[i].alive = alive
-      isAlive[i] = alive
-    }
-  }
+  const patterns = [
+    // Glider
+    [[1, 0], [2, 1], [0, 2], [1, 2], [2, 2]],
+
+    // Spaceship
+    [[0, 1], [0, 2], [0, 3], [1, 0], [1, 3], [2, 3], [3, 3], [4, 3], [5, 0], [5, 2]],
+
+    // Gosper glider gun
+    [[5, 1], [5, 2], [6, 1], [6, 2], [5, 11], [6, 11], [7, 11], [4, 12], [3, 13], [3, 14],
+      [8, 12], [9, 13], [9, 14], [6, 15], [4, 16], [5, 17], [6, 17], [7, 17], [6, 18], [8, 16],
+      [3, 21], [4, 21], [5, 21], [3, 22], [4, 22], [5, 22], [2, 23], [6, 23], [1, 25], [2, 25],
+      [6, 25], [7, 25], [3, 35], [4, 35], [3, 36], [4, 36]],
+
+    // Chaotic
+    [[0, 12], [1, 12], [2, 12], [1, 6], [2, 7], [0, 8], [1, 8], [2, 8]],
+  ]
 
   const fillPattern = function(r0, c0, ...pattern) {
     pattern.forEach(([r, c]) => {
@@ -177,17 +186,17 @@
     })
   }
 
+  const fillRandom = function() {
+    for (let i = 0; i < numRows * numColumns; i++) {
+      if (Math.random() < 0.1) { // 10% chance of each cell being alive
+        grid[i].alive = true
+        isAlive[i] = true
+      }
+    }
+  }
+
   const init = function() {
     setupGrids()
-
-    // Gosper glider gun
-    // fillPattern(10, 10, [5, 1], [5, 2], [6, 1], [6, 2], [5, 11], [6, 11], [7, 11], [4, 12], [3, 13], [3, 14], [8, 12], [9, 13], [9, 14], [6, 15], [4, 16], [5, 17], [6, 17], [7, 17], [6, 18], [8, 16], [3, 21], [4, 21], [5, 21], [3, 22], [4, 22], [5, 22], [2, 23], [6, 23], [1, 25], [2, 25], [6, 25], [7, 25], [3, 35], [4, 35], [3, 36], [4, 36])
-
-    // Glider
-    // fillPattern(10, 10, [1, 0], [2, 1], [0, 2], [1, 2], [2, 2])
-
-    // fillPattern(10, 10, [0, 12], [1, 12], [2, 12], [1, 6],[2, 7],[0, 8],[1, 8],[2, 8])
-
     fillRandom()
     updateGrid()
     tick()
