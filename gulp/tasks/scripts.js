@@ -20,6 +20,10 @@ gulp.task('scripts', ['lint'], () => {
   return gulp.src(config.source)
     .pipe($.sourcemaps.init())
     .pipe($.babel())
+    .on('error', function(e) {
+      console.error(e)
+      this.emit('end')
+    })
     .pipe($.concat(config.filename))
     .pipe($.if(isProduction, $.uglify({ mangle: false })))
     .pipe($.if(!isProduction, $.sourcemaps.write()))
