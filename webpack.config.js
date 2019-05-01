@@ -1,5 +1,6 @@
 /* eslint-env node */
 const CopyPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const config = {
   entry: './src/scripts/index.js',
@@ -30,6 +31,7 @@ const config = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyPlugin([
       { from: 'src/manifest.json' },
       { from: 'src/robots.txt' },
