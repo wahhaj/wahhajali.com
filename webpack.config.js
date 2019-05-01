@@ -18,12 +18,19 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
+        ]
+      }
     ],
   },
   plugins: [
     new CopyPlugin([
       { from: 'src/manifest.json' },
-      { from: 'src/favicon.ico' },
       { from: 'src/robots.txt' },
       { from: 'src/index.html' },
     ]),
