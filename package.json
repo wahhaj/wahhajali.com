@@ -4,7 +4,8 @@
   "description": "Wahhaj Ali - Software Engineer",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "start": "webpack-dev-server --open"
   },
   "repository": {
     "type": "git",
@@ -13,30 +14,17 @@
   "author": "Wahhaj Ali",
   "homepage": "http://wahhajali.com",
   "devDependencies": {
-    "babel-preset-env": "^1.6.0",
-    "browser-sync": "^2.18.13",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^5.0.3",
     "eslint": "^4.3.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-eslint": "^4.0.0",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^3.3.0",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-uglify": "^3.0.0",
-    "js-yaml": "^3.9.0",
     "normalize.css": "^7.0.0",
-    "psi": "^3.0.0",
-    "require-dir": "^0.3.2",
-    "run-sequence": "^2.0.0",
+    "psi": "^3.1.0",
     "sw-precache": "^5.2.0",
     "sw-toolbox": "^3.6.0",
-    "yargs": "^8.0.2"
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1",
+    "webpack-dev-server": "^3.3.1"
   }
 }
