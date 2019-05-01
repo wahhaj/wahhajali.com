@@ -33,6 +33,7 @@ module.exports = {
       { from: 'src/manifest.json' },
       { from: 'src/robots.txt' },
       { from: 'src/index.html' },
+      { from: 'src/images/', to: 'images/' }
     ]),
   ],
 
