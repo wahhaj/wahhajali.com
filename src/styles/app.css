@@ -1,0 +1,87 @@
+body {
+  font-family: "Lato", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-size: 16px;
+  margin: 0;
+}
+
+header.header {
+  height: 100vh;
+  position: relative;
+
+  .header-info, .header-background, #game, #scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    text-align: center;
+
+    padding-bottom: 10%; /* Makes sure text is floating above the moon */
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+
+    .header-name {
+      color:#fff;
+      font-size: 3.5rem;
+      margin: 0 0 1rem 0;
+    }
+
+    .header-contact {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      display: inline-flex;
+      flex-flow: row wrap;
+      width: 100%;
+      max-width: 960px;
+
+      li {
+        flex: 1 1 100%;
+        @media (min-width: 960px) {
+          flex: 1;
+        }
+
+        a {
+          color: #fff;
+          font-size: 1.2rem;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+
+          display: inline-flex;
+          justify-content: center;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .header-background {
+    background-image: linear-gradient(#3023AE 5%, #C86DD7 100%);
+    #game, #scene {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+[class^="icon"], [class*=" icon"] {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  margin-right: 5px;
+}
