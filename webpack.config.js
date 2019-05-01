@@ -1,7 +1,7 @@
 /* eslint-env node */
 const CopyPlugin = require('copy-webpack-plugin')
 
-module.exports = {
+const config = {
   entry: './src/scripts/index.js',
   output: {
     filename: 'bundle.js',
@@ -20,9 +20,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /(node_modules)/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
+          { loader: 'css-loader', options: { importLoaders: 1 }},
           'postcss-loader'
         ]
       }
@@ -37,9 +38,15 @@ module.exports = {
     ]),
   ],
 
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: 'production',
   devServer: {
     contentBase: './dist',
   },
+}
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'inline-source-map'
+  }
+  return config
 }

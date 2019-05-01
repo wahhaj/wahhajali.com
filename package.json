@@ -4,8 +4,8 @@
   "description": "Wahhaj Ali - Software Engineer",
   "private": true,
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "build": "webpack --mode=production",
+    "start": "webpack-dev-server --open --mode=development"
   },
   "repository": {
     "type": "git",
