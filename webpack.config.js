@@ -1,6 +1,7 @@
 /* eslint-env node */
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
   entry: './src/scripts/index.js',
@@ -23,7 +24,7 @@ const config = {
         test: /\.css$/,
         exclude: /(node_modules)/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { importLoaders: 1 }},
           'postcss-loader'
         ]
@@ -38,6 +39,7 @@ const config = {
       { from: 'src/index.html' },
       { from: 'src/images/', to: 'images/' }
     ]),
+    new MiniCssExtractPlugin(),
   ],
 
   mode: 'production',
