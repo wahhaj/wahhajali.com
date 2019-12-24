@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
-    require('precss'),
-    require('postcss-preset-env'),
-    require('cssnano'),
-  ]
+    require("precss"),
+    require("postcss-preset-env"),
+    require("cssnano"),
+  ],
 }
