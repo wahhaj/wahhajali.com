@@ -1,6 +1,6 @@
 import { List } from "immutable"
-import { Cell, CellWithState, Patterns } from "scripts/types"
-import patterns from "scripts/patterns"
+import { Cell, CellWithState, Patterns } from "./types"
+import patterns from "./patterns"
 
 class GameOfLife {
   cells: List<CellWithState>

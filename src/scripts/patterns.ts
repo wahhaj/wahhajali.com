@@ -1,4 +1,4 @@
-import { Patterns } from "scripts/types"
+import { Patterns } from "./types"
 
 const patterns: Patterns = {
   acorn: [
