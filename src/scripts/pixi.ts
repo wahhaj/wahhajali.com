@@ -18,12 +18,14 @@ export default class PixiApp {
 
   constructor() {
     this.theme = THEMES[randomInt(0, THEMES.length - 1)]
+
+    const domEl = <HTMLCanvasElement>document.querySelector("#pixi")
     this.app = new PIXI.Application({
       transparent: false,
       antialias: true,
       width,
       height,
-      view: <HTMLCanvasElement>document.querySelector("#pixi"),
+      view: domEl,
       resolution: devicePixelRatio,
     })
     this.drawBackground()
@@ -45,6 +47,7 @@ export default class PixiApp {
     this.scene = new Scene(sceneContainer, width, height, this.theme)
 
     PIXI.Loader.shared.load(() => {
+      domEl.classList.add("loaded")
       this.app.ticker.add((delta: number) => this.tick(delta))
     })
   }
