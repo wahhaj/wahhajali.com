@@ -1,7 +1,7 @@
-import { Patterns } from "./types"
+import { Pattern } from "./types"
 
-const patterns: Patterns = {
-  acorn: [
+const patterns: Pattern[] = [
+  [
     { row: 0, col: 1 },
     { row: 1, col: 3 },
     { row: 2, col: 0 },
@@ -11,13 +11,13 @@ const patterns: Patterns = {
     { row: 2, col: 6 },
   ],
 
-  blinker: [
+  [
     { row: 0, col: 0 },
     { row: 0, col: 1 },
     { row: 0, col: 2 },
   ],
 
-  chaotic: [
+  [
     { row: 0, col: 12 },
     { row: 1, col: 12 },
     { row: 2, col: 12 },
@@ -28,7 +28,7 @@ const patterns: Patterns = {
     { row: 2, col: 8 },
   ],
 
-  glider: [
+  [
     { row: 1, col: 0 },
     { row: 2, col: 1 },
     { row: 0, col: 2 },
@@ -36,7 +36,7 @@ const patterns: Patterns = {
     { row: 2, col: 2 },
   ],
 
-  spaceship: [
+  [
     { row: 0, col: 1 },
     { row: 0, col: 2 },
     { row: 0, col: 3 },
@@ -48,6 +48,6 @@ const patterns: Patterns = {
     { row: 5, col: 0 },
     { row: 5, col: 2 },
   ],
-}
+]
 
 export default patterns

@@ -1,8 +1,9 @@
 import { List } from "immutable"
-import { Cell, CellWithState, Patterns } from "./types"
+import { Cell, CellWithState, Pattern } from "./types"
 import patterns from "./patterns"
+import { randomInt } from "./utils"
 
-class GameOfLife {
+export default class GameOfLife {
   cells: List<CellWithState>
   rows: number
   columns: number
@@ -37,8 +38,12 @@ class GameOfLife {
     })
   }
 
-  insertPatternAtCell(patternName: keyof Patterns, cell: Cell) {
-    const pattern = patterns[patternName]
+  insertRandomPattern() {
+    const pattern = patterns[randomInt(0, patterns.length - 1)]
+    const cell: Cell = {
+      row: randomInt(0, this.rows - 1),
+      col: randomInt(0, this.columns - 1),
+    }
 
     this.cells = this.cells.withMutations((cells) => {
       pattern.forEach(({ row, col }) => {
@@ -118,5 +123,3 @@ class GameOfLife {
     return row * this.columns + col
   }
 }
-
-export default GameOfLife
