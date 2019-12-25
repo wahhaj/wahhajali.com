@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js"
 import { CRTFilter } from "@pixi/filter-crt"
 import { Cell } from "./types"
 import GameOfLife from "./game-of-life"
-import { randomInt } from "./utils"
+import { colors, randomInt } from "./utils"
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -104,9 +104,9 @@ export default class PixiApp {
 
     // use canvas2d API to create gradient
     const grd = ctx.createLinearGradient(0, 0, 0, quality)
-    grd.addColorStop(0, "#8941ff")
-    grd.addColorStop(0.5, "#f070f9")
-    grd.addColorStop(1, "#ff71ce")
+    grd.addColorStop(0, colors.background.top)
+    grd.addColorStop(0.5, colors.background.mid)
+    grd.addColorStop(1, colors.background.bottom)
 
     ctx.fillStyle = grd
     ctx.fillRect(0, 0, 1, quality)
