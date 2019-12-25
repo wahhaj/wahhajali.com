@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js"
 import { CRTFilter } from "@pixi/filter-crt"
 import Stars from "./stars"
-import Scene from "./scene"
+import Scenery from "./scenery"
 import { THEMES, randomInt } from "./utils"
 import { Theme } from "./types"
 
@@ -14,7 +14,7 @@ export default class PixiApp {
 
   private theme: Theme
   private stars: Stars
-  private scene: Scene
+  private scenery: Scenery
 
   constructor() {
     this.theme = THEMES[randomInt(0, THEMES.length - 1)]
@@ -42,9 +42,9 @@ export default class PixiApp {
     this.app.stage.addChild(starsContainer)
     this.stars = new Stars(starsContainer, width, height)
 
-    const sceneContainer = new PIXI.Container()
-    this.app.stage.addChild(sceneContainer)
-    this.scene = new Scene(sceneContainer, width, height, this.theme)
+    const sceneryContainer = new PIXI.Container()
+    this.app.stage.addChild(sceneryContainer)
+    this.scenery = new Scenery(sceneryContainer, width, height, this.theme)
 
     PIXI.Loader.shared.load(() => {
       domEl.classList.add("loaded")

@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js"
 import { THEMES, randomInt } from "./utils"
 import { Theme } from "./types"
 
-export default class Scene {
+export default class Scenery {
   container: PIXI.Container
   width: number
   height: number
