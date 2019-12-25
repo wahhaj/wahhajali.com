@@ -1,37 +1,45 @@
 import * as PIXI from "pixi.js"
-import { COLORS, randomInt } from "./utils"
+import { THEMES, randomInt } from "./utils"
+import { Theme } from "./types"
 
 export default class Scene {
   container: PIXI.Container
   width: number
   height: number
+  theme: Theme
   moonRadius: number
 
-  constructor(container: PIXI.Container, width: number, height: number) {
+  constructor(
+    container: PIXI.Container,
+    width: number,
+    height: number,
+    theme: Theme,
+  ) {
     this.container = container
     this.width = width
     this.height = height
+    this.theme = theme
 
     this.moonRadius = Math.min(width / 6, height / 4)
     this.drawMoon()
 
     this.drawMountainRange(
-      this.moonRadius * 2,
-      this.moonRadius * 3,
-      COLORS.mountains.back.light,
-      COLORS.mountains.back.dark,
+      this.moonRadius * 2.5,
+      this.moonRadius * 4,
+      this.theme.mountains.back.light,
+      this.theme.mountains.back.dark,
     )
     this.drawMountainRange(
       this.moonRadius * 1.5,
-      this.moonRadius * 2,
-      COLORS.mountains.mid.light,
-      COLORS.mountains.mid.dark,
+      this.moonRadius * 2.5,
+      this.theme.mountains.mid.light,
+      this.theme.mountains.mid.dark,
     )
     this.drawMountainRange(
       this.moonRadius * 1,
-      this.moonRadius * 1.5,
-      COLORS.mountains.front.light,
-      COLORS.mountains.front.dark,
+      this.moonRadius * 2,
+      this.theme.mountains.front.light,
+      this.theme.mountains.front.dark,
       1.0,
     )
   }
@@ -42,7 +50,7 @@ export default class Scene {
     const centerY = this.height - this.moonRadius * 0.6
 
     // Draw the moon
-    this.drawCircle(centerX, centerY, this.moonRadius, COLORS.moon.shine)
+    this.drawCircle(centerX, centerY, this.moonRadius, this.theme.moon.shine)
 
     // Draw moon craters
     this.drawCircle(
@@ -103,8 +111,8 @@ export default class Scene {
         this.drawMountain(
           i - randomInt(minWidth, maxWidth),
           i,
-          lightColor,
           darkColor,
+          lightColor,
         )
       }
     }
@@ -115,8 +123,8 @@ export default class Scene {
         this.drawMountain(
           i,
           i + randomInt(minWidth, maxWidth),
-          darkColor,
           lightColor,
+          darkColor,
         )
       }
     }
@@ -132,7 +140,7 @@ export default class Scene {
     x: number,
     y: number,
     radius: number,
-    color: string = COLORS.moon.crater,
+    color: string = this.theme.moon.crater,
   ) {
     this.container.addChild(
       new PIXI.Graphics()
