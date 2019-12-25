@@ -18,8 +18,6 @@ export default class Stars {
     this.height = height
     this.step = 0
     this.initializeGame()
-
-    PIXI.Loader.shared.add("star", "images/star.png")
   }
 
   tick(delta: number) {
