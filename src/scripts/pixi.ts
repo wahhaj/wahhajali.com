@@ -1,23 +1,17 @@
 import * as PIXI from "pixi.js"
 import { CRTFilter } from "@pixi/filter-crt"
-import { Cell } from "./types"
-import GameOfLife from "./game-of-life"
+import Stars from "./stars"
 import Scene from "./scene"
-import { colors, randomInt } from "./utils"
+import { colors } from "./utils"
 
 const width = window.innerWidth
 const height = window.innerHeight
 
 export default class PixiApp {
   private app: PIXI.Application
-  private loader: PIXI.Loader
   private crt: CRTFilter
 
-  private game!: GameOfLife
-  private starPadding!: Record<"x" | "y", number>
-  private stars: PIXI.Container
-  private step: number
-
+  private stars: Stars
   private scene: Scene
 
   constructor() {
@@ -31,74 +25,32 @@ export default class PixiApp {
     })
     this.drawBackground()
 
-    this.loader = PIXI.Loader.shared
-    this.loader.add("star", "images/star.png")
-
-    this.stars = new PIXI.Container()
-    this.app.stage.addChild(this.stars)
-
-    this.initializeGame()
-    this.step = 0
-    this.loader.load(() => {
-      this.app.ticker.add((delta: number) => this.tick(delta))
-    })
-
     this.crt = new CRTFilter({
-      // time: 5,
-      // vignetting: 0,
       noise: 0.1,
-      vignettingAlpha: 0.3,
+      // vignetting: 0,
+      vignettingAlpha: 0.4,
     })
 
-    this.app.stage.filters = [this.crt]
+    // this.app.stage.filters = [this.crt]
+
+    const starsContainer = new PIXI.Container()
+    this.app.stage.addChild(starsContainer)
+    this.stars = new Stars(starsContainer, width, height)
 
     const sceneContainer = new PIXI.Container()
     this.app.stage.addChild(sceneContainer)
     this.scene = new Scene(sceneContainer, width, height)
+
+    PIXI.Loader.shared.load(() => {
+      this.app.ticker.add((delta: number) => this.tick(delta))
+    })
   }
 
   private tick(delta: number) {
-    this.step++
-    this.game.tick()
-
-    this.stars.removeChildren()
-    this.game.cells.forEach((cell) => {
-      if (cell.alive) {
-        this.drawStar(cell)
-      }
-    })
-
-    if (this.step % 60 === 0) {
-      this.game.insertRandomPattern()
-      this.step = 0
-    }
+    this.stars.tick(delta)
 
     // this.crt.seed = Math.random()
-    this.crt.time = this.crt.time + 0.5
-  }
-
-  private initializeGame() {
-    this.starPadding = {
-      x: 10,
-      y: 10,
-    }
-
-    let rows, columns
-
-    if (width > height) {
-      columns = Math.min(width / this.starPadding.y, 60)
-      this.starPadding.x = width / columns
-      rows = Math.min(height / this.starPadding.x, 60)
-      this.starPadding.y = height / rows
-    } else {
-      rows = Math.min(height / this.starPadding.x, 60)
-      this.starPadding.y = height / rows
-      columns = Math.min(width / this.starPadding.y, 60)
-      this.starPadding.x = width / columns
-    }
-
-    this.game = new GameOfLife(Math.floor(rows), Math.floor(columns), true)
-    console.log(this.game.toString())
+    // this.crt.time = this.crt.time + 0.5
   }
 
   private drawBackground() {
@@ -124,18 +76,5 @@ export default class PixiApp {
     bg.height = height
 
     this.app.stage.addChild(bg)
-  }
-
-  private drawStar({ row, col }: Cell) {
-    const size = randomInt(3, 6)
-
-    const cellSprite = new PIXI.Sprite(this.loader.resources.star.texture)
-    cellSprite.anchor.set(0.5)
-    cellSprite.width = size
-    cellSprite.height = size
-    cellSprite.x = (col + 0.5) * this.starPadding.x
-    cellSprite.y = (row + 0.5) * this.starPadding.y
-
-    this.stars.addChild(cellSprite)
   }
 }
