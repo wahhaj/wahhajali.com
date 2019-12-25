@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js"
 import { CRTFilter } from "@pixi/filter-crt"
 import { Cell } from "./types"
 import GameOfLife from "./game-of-life"
+import Scene from "./scene"
 import { colors, randomInt } from "./utils"
 
 const width = window.innerWidth
@@ -16,6 +17,8 @@ export default class PixiApp {
   private starPadding!: Record<"x" | "y", number>
   private stars: PIXI.Container
   private step: number
+
+  private scene: Scene
 
   constructor() {
     this.app = new PIXI.Application({
@@ -48,6 +51,10 @@ export default class PixiApp {
     })
 
     this.app.stage.filters = [this.crt]
+
+    const sceneContainer = new PIXI.Container()
+    this.app.stage.addChild(sceneContainer)
+    this.scene = new Scene(sceneContainer, width, height)
   }
 
   private tick(delta: number) {
