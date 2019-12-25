@@ -6,7 +6,7 @@
 const randomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min
 
-const colors = {
+const COLORS = {
   moon: {
     shine: "#fff9f3",
     crater: "#eeeeee",
@@ -32,4 +32,6 @@ const colors = {
   },
 }
 
-export { randomInt, colors }
+const MAX_GRID_SIZE = 120
+
+export { randomInt, COLORS, MAX_GRID_SIZE }

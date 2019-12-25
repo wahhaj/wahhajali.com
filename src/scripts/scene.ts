@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js"
-import { colors, randomInt } from "./utils"
+import { COLORS, randomInt } from "./utils"
 
 export default class Scene {
   container: PIXI.Container
@@ -18,20 +18,20 @@ export default class Scene {
     this.drawMountainRange(
       this.moonRadius * 2,
       this.moonRadius * 3,
-      colors.mountains.back.light,
-      colors.mountains.back.dark,
+      COLORS.mountains.back.light,
+      COLORS.mountains.back.dark,
     )
     this.drawMountainRange(
       this.moonRadius * 1.5,
       this.moonRadius * 2,
-      colors.mountains.mid.light,
-      colors.mountains.mid.dark,
+      COLORS.mountains.mid.light,
+      COLORS.mountains.mid.dark,
     )
     this.drawMountainRange(
       this.moonRadius * 1,
       this.moonRadius * 1.5,
-      colors.mountains.front.light,
-      colors.mountains.front.dark,
+      COLORS.mountains.front.light,
+      COLORS.mountains.front.dark,
       1.0,
     )
   }
@@ -42,7 +42,7 @@ export default class Scene {
     const centerY = this.height - this.moonRadius * 0.6
 
     // Draw the moon
-    this.drawCircle(centerX, centerY, this.moonRadius, colors.moon.shine)
+    this.drawCircle(centerX, centerY, this.moonRadius, COLORS.moon.shine)
 
     // Draw moon craters
     this.drawCircle(
@@ -132,7 +132,7 @@ export default class Scene {
     x: number,
     y: number,
     radius: number,
-    color: string = colors.moon.crater,
+    color: string = COLORS.moon.crater,
   ) {
     this.container.addChild(
       new PIXI.Graphics()

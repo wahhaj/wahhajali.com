@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js"
 import { CRTFilter } from "@pixi/filter-crt"
 import Stars from "./stars"
 import Scene from "./scene"
-import { colors } from "./utils"
+import { COLORS } from "./utils"
 
 const width = window.innerWidth
 const height = window.innerHeight
@@ -63,9 +63,9 @@ export default class PixiApp {
 
     // use canvas2d API to create gradient
     const grd = ctx.createLinearGradient(0, 0, 0, quality)
-    grd.addColorStop(0, colors.background.top)
-    grd.addColorStop(0.5, colors.background.mid)
-    grd.addColorStop(1, colors.background.bottom)
+    grd.addColorStop(0, COLORS.background.top)
+    grd.addColorStop(0.5, COLORS.background.mid)
+    grd.addColorStop(1, COLORS.background.bottom)
 
     ctx.fillStyle = grd
     ctx.fillRect(0, 0, 1, quality)

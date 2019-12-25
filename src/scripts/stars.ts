@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js"
 import GameOfLife from "./game-of-life"
 import { Cell } from "./types"
-import { randomInt } from "./utils"
+import { randomInt, MAX_GRID_SIZE } from "./utils"
 
 export default class Stars {
   container: PIXI.Container
@@ -48,14 +48,14 @@ export default class Stars {
     let rows, columns
 
     if (this.width > this.height) {
-      columns = Math.min(this.width / this.starPadding.y, 60)
+      columns = Math.min(this.width / this.starPadding.y, MAX_GRID_SIZE)
       this.starPadding.x = this.width / columns
-      rows = Math.min(this.height / this.starPadding.x, 60)
+      rows = Math.min(this.height / this.starPadding.x, MAX_GRID_SIZE)
       this.starPadding.y = this.height / rows
     } else {
-      rows = Math.min(this.height / this.starPadding.x, 60)
+      rows = Math.min(this.height / this.starPadding.x, MAX_GRID_SIZE)
       this.starPadding.y = this.height / rows
-      columns = Math.min(this.width / this.starPadding.y, 60)
+      columns = Math.min(this.width / this.starPadding.y, MAX_GRID_SIZE)
       this.starPadding.x = this.width / columns
     }
 
