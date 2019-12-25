@@ -1,4 +1,4 @@
 require("../styles/main.css")
-import initialize from "./pixi"
+import PixiApp from "./pixi"
 
-initialize()
+new PixiApp()
