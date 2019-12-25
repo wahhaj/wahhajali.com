@@ -20,7 +20,7 @@ export default class PixiApp {
       antialias: true,
       width,
       height,
-      view: <HTMLCanvasElement>document.querySelector("#game"),
+      view: <HTMLCanvasElement>document.querySelector("#pixi"),
       resolution: devicePixelRatio,
     })
     this.drawBackground()

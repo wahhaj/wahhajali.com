@@ -4,79 +4,84 @@ body {
   margin: 0;
 }
 
-header.header {
+header {
   height: 100vh;
   position: relative;
+}
 
-  .header-info, .header-background, #game, #scene {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
+.background,
+#pixi,
+.info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
-  .header-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.background {
+  /* background-image: linear-gradient(#b967ff 5%, #ff71ce 100%); */
+  background-image: linear-gradient(#8941ff 5%, #f070f9 50%, #ff71ce 100%);
+}
 
-    color: #fff;
-    text-align: center;
+#pixi {
+  width: 100%;
+  height: 100%;
+}
 
-    padding-bottom: 10%; /* Makes sure text is floating above the moon */
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    .header-name {
-      color:#fff;
-      font-size: 3.5rem;
-      margin: 0 0 1rem 0;
-    }
+  color: #fff;
+  text-align: center;
 
-    .header-contact {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+  padding-bottom: 10%; /* Makes sure text is floating above the moon */
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
 
-      display: inline-flex;
-      flex-flow: row wrap;
-      width: 100%;
-      max-width: 960px;
+.name {
+  color: #fff;
+  font-size: 3.5rem;
+  margin: 0 0 1rem 0;
+}
 
-      li {
-        flex: 1 1 100%;
-        @media (min-width: 960px) {
-          flex: 1;
-        }
+.contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-        a {
-          color: #fff;
-          font-size: 1.2rem;
-          text-decoration: none;
-          padding: 0.5rem 1rem;
+  display: inline-flex;
+  flex-flow: row wrap;
+  width: 100%;
+  max-width: 960px;
+}
 
-          display: inline-flex;
-          justify-content: center;
-        }
-
-        a:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-
-  .header-background {
-    background-image: linear-gradient(#3023AE 5%, #C86DD7 100%);
-    #game, #scene {
-      width: 100%;
-      height: 100%;
-    }
+.contact li {
+  flex: 1 1 100%;
+  @media (min-width: 960px) {
+    flex: 1;
   }
 }
 
-[class^="icon"], [class*=" icon"] {
+.contact li a {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+
+  display: inline-flex;
+  justify-content: center;
+}
+
+.contact li a:hover {
+  text-decoration: underline;
+}
+
+[class^="icon"],
+[class*=" icon"] {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
