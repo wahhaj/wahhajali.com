@@ -5,6 +5,7 @@ export interface Cell {
 
 export interface CellWithState extends Cell {
   alive: boolean
+  size: number
 }
 
 export type Pattern = Cell[]

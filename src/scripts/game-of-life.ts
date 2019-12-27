@@ -1,7 +1,7 @@
 import { List } from "immutable"
-import { Cell, CellWithState, Pattern } from "./types"
+import { Cell, CellWithState } from "./types"
 import patterns from "./patterns"
-import { randomInt } from "./utils"
+import { randomInt, MAX_CELL_SIZE } from "./utils"
 
 export default class GameOfLife {
   cells: List<CellWithState>
@@ -19,6 +19,7 @@ export default class GameOfLife {
             row,
             col,
             alive: randomizeInitialState ? Math.random() < 0.1 : false,
+            size: 0,
           })
         }
       }
@@ -33,6 +34,12 @@ export default class GameOfLife {
           cells.setIn([i, "alive"], true)
         } else if (liveNeighbours !== 2) {
           cells.setIn([i, "alive"], false)
+        }
+
+        if (cell.alive && cell.size < MAX_CELL_SIZE) {
+          cells.setIn([i, "size"], cell.size + randomInt(1, 3))
+        } else if (!cell.alive && cell.size > 0) {
+          cells.setIn([i, "size"], cell.size - randomInt(1, 3))
         }
       })
     })

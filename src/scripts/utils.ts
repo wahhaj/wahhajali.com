@@ -14,9 +14,19 @@ const randomInt = (min: number, max: number) =>
 const MAX_GRID_SIZE = 120
 
 /**
+ * The maximum width and height (in pixels) of each cell when drawn onto the scene
+ */
+const MAX_CELL_SIZE = 6
+
+/**
+ * The frequency (in Hz) with which to simulate the game of life. Max 60.
+ */
+const SIMULATION_FREQUENCY = 20
+
+/**
  * The probability of enabling the glitch filters onto the scene
  */
-const GLITCH_PROBABILITY = 0.2
+const GLITCH_PROBABILITY = 0
 
 /**
  * Themes for the Moon, Mountains, and Background colors
@@ -158,4 +168,11 @@ const THEMES: Theme[] = [
   },
 ]
 
-export { randomInt, THEMES, MAX_GRID_SIZE, GLITCH_PROBABILITY }
+export {
+  randomInt,
+  THEMES,
+  MAX_GRID_SIZE,
+  MAX_CELL_SIZE,
+  GLITCH_PROBABILITY,
+  SIMULATION_FREQUENCY,
+}
