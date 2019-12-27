@@ -1,8 +1,10 @@
 import * as PIXI from "pixi.js"
 import { CRTFilter } from "@pixi/filter-crt"
+import { GlitchFilter } from "@pixi/filter-glitch"
+
 import Stars from "./stars"
 import Scenery from "./scenery"
-import { THEMES, randomInt } from "./utils"
+import { THEMES, GLITCH_PROBABILITY, randomInt } from "./utils"
 import { Theme } from "./types"
 
 export default class PixiApp {
@@ -20,7 +22,11 @@ export default class PixiApp {
   private backgroundGradient: PIXI.Texture
   private stars!: Stars
 
-  private crt: CRTFilter
+  private filters: {
+    enabled: boolean
+    crt: CRTFilter
+    glitch: GlitchFilter
+  }
 
   constructor() {
     this.width = window.innerWidth
@@ -70,19 +76,47 @@ export default class PixiApp {
       this.drawStars()
     })
 
-    this.crt = new CRTFilter({
-      noise: 0.1,
-      // vignetting: 0,
-      vignettingAlpha: 0.4,
-    })
-    // this.app.stage.filters = [this.crt]
+    this.filters = {
+      enabled: Math.random() < GLITCH_PROBABILITY,
+      crt: new CRTFilter(),
+      glitch: new GlitchFilter(),
+    }
+
+    if (this.filters.enabled) {
+      this.filters.glitch.fillMode = 4
+      this.filters.glitch.red = new PIXI.Point(0, 0)
+      this.filters.glitch.green = new PIXI.Point(0, 0)
+      this.filters.glitch.blue = new PIXI.Point(0, 0)
+
+      this.app.stage.filters = [this.filters.glitch, this.filters.crt]
+    }
   }
 
   private tick(delta: number) {
     this.stars.tick(delta)
 
-    // this.crt.seed = Math.random()
-    // this.crt.time = this.crt.time + 0.5
+    if (this.filters.enabled) {
+      this.filters.crt.seed = Math.random()
+      this.filters.crt.time = this.filters.crt.time + 0.5 * delta
+
+      if (Math.random() < 0.05) {
+        this.filters.glitch.direction = randomInt(0, 180)
+        this.filters.glitch.slices = randomInt(0, 10)
+
+        this.filters.glitch.red = new PIXI.Point(
+          randomInt(-10, 10),
+          randomInt(-10, 10),
+        )
+        this.filters.glitch.green = new PIXI.Point(
+          randomInt(-10, 10),
+          randomInt(-10, 10),
+        )
+        this.filters.glitch.blue = new PIXI.Point(
+          randomInt(-10, 10),
+          randomInt(-10, 10),
+        )
+      }
+    }
   }
 
   private drawBackground() {

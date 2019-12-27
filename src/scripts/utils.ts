@@ -14,6 +14,11 @@ const randomInt = (min: number, max: number) =>
 const MAX_GRID_SIZE = 120
 
 /**
+ * The probability of enabling the glitch filters onto the scene
+ */
+const GLITCH_PROBABILITY = 0.2
+
+/**
  * Themes for the Moon, Mountains, and Background colors
  */
 const THEMES: Theme[] = [
@@ -153,4 +158,4 @@ const THEMES: Theme[] = [
   },
 ]
 
-export { randomInt, THEMES, MAX_GRID_SIZE }
+export { randomInt, THEMES, MAX_GRID_SIZE, GLITCH_PROBABILITY }

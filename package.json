@@ -14,6 +14,8 @@
   "author": "Wahhaj Ali",
   "homepage": "http://wahhajali.com",
   "devDependencies": {
+    "@pixi/filter-crt": "^3.0.3",
+    "@pixi/filter-glitch": "^3.0.3",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.4.0",
@@ -21,6 +23,7 @@
     "immutable": "^4.0.0-rc.12",
     "mini-css-extract-plugin": "^0.9.0",
     "normalize.css": "^8.0.1",
+    "pixi.js": "^5.2.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "precss": "^4.0.0",
@@ -32,9 +35,5 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.10.1"
-  },
-  "dependencies": {
-    "@pixi/filter-crt": "^3.0.3",
-    "pixi.js": "^5.2.0"
   }
 }
