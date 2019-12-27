@@ -26,7 +26,7 @@ const SIMULATION_FREQUENCY = 20
 /**
  * The probability of enabling the glitch filters onto the scene
  */
-const GLITCH_PROBABILITY = 0
+const GLITCH_PROBABILITY = 0.1
 
 /**
  * Themes for the Moon, Mountains, and Background colors
