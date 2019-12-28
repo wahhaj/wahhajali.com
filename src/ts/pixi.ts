@@ -55,7 +55,7 @@ export default class PixiApp {
     // this.theme = THEMES[2]
     this.theme = THEMES[randomInt(0, THEMES.length - 1)]
     this.backgroundGradient = this.getBackgroundGradientTexture()
-    PIXI.Loader.shared.add("star", "images/star.png")
+    PIXI.Loader.shared.add("star", "img/star.png")
 
     this.drawBackground()
     this.drawScenery()
