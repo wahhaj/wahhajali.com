@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js"
-import { THEMES, randomInt } from "./utils"
+import { randomInt } from "./utils"
 import { Theme } from "./types"
 
 export default class Scenery {

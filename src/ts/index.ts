@@ -1,4 +1,4 @@
-require("../styles/main.css")
+require("../css/main.css")
 
 import PixiApp from "./pixi"
 new PixiApp()

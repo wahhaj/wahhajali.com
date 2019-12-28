@@ -3,7 +3,7 @@ const CopyPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 const config = {
-  entry: "./src/scripts/index.ts",
+  entry: "./src/ts/index.ts",
   output: {
     filename: "bundle.js",
   },
@@ -35,7 +35,7 @@ const config = {
       { from: "src/manifest.json" },
       { from: "src/robots.txt" },
       { from: "src/index.html" },
-      { from: "src/images/", to: "images/" },
+      { from: "src/img/", to: "img/" },
     ]),
     new MiniCssExtractPlugin(),
   ],

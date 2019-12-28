@@ -64,11 +64,6 @@ export default class GameOfLife {
     })
   }
 
-  setCellAlive(cell: Cell, alive: boolean) {
-    const i = this.cellIndex(cell)
-    this.cells.setIn([i, "alive"], alive)
-  }
-
   toString(): string {
     return this.cells
       .map(
